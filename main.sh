@@ -10,6 +10,8 @@ export PATH="$PATH:$HOME/.bin"
 export PATH="$PATH:$HOME/bin"
 export PATH="$PATH:./node_modules/.bin"
 
+export DOTFILES="$HOME/code/dotfiles"
+
 export EDITOR="vim"
 export GUI_EDITOR="subl"
 
@@ -20,8 +22,8 @@ alias port="sudo ss -tulpn"
 
 alias vimrc="$EDITOR $HOME/.vimrc"
 
-alias dotfiles="subl $HOME/code/dotfiles"
-alias profile=dotfiles
+alias profile="$GUI_EDITOR $DOTFILES"
+alias dotfiles=profile
 
 function upgrade {
     sudo apt update
