@@ -17,14 +17,13 @@ function fixup-all {
 }
 
 function branch-from-master {
-    if [ $# -eq 0 ]; then
+    if [ -z "$1" ]; then
         echo "Error: an argument must be provided"
-        exit 1
+    else
+        wip
+        git checkout master
+        git checkout -b $1
     fi
-
-    wip
-    git checkout master
-    branch $1
 }
 
 function melt {
@@ -34,12 +33,12 @@ function melt {
 
 function merged {
     if [ $# -eq 0 ]; then
-        echo "Error: an argument must be provided"
-        exit 1
+        git fetch origin > /dev/null
+        git log --oneline --decorate --first-parent origin/master
+    else
+        git fetch origin > /dev/null
+        git log --oneline --decorate --first-parent origin/master | grep -i $1
     fi
-
-    git fetch origin > /dev/null
-    git log --oneline --decorate --first-parent origin/master | grep -i $1
 }
 
 function news {
