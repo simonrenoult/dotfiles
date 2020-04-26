@@ -10,7 +10,10 @@ export PATH="$PATH:$HOME/.bin"
 export PATH="$PATH:$HOME/bin"
 export PATH="$PATH:./node_modules/.bin"
 
-export DOTFILES="$HOME/projects/dotfiles"
+export ZSHRC="$HOME/.zshrc"
+# since ".zshrc" might be a symbolic link to a file somewhere else
+export ZSHRC_ORIGIN=$(readlink -f ${ZSHRC})
+export ZSHRC_ORIGIN_DIRECTORY=$(dirname "${ZSHRC_ORIGIN}")
 
 export EDITOR="vim"
 export GUI_EDITOR="subl"
@@ -22,7 +25,7 @@ alias port="sudo ss -tulpn"
 
 alias vimrc="$EDITOR $HOME/.vimrc"
 
-alias profile="$GUI_EDITOR $DOTFILES"
+alias profile="$GUI_EDITOR $ZSHRC_ORIGIN_DIRECTORY"
 alias dotfiles=profile
 
 function upgrade {
@@ -32,7 +35,7 @@ function upgrade {
     upgrade_oh_my_zsh
 }
 
-. $DOTFILES/zsh.sh
-. $DOTFILES/notes.sh
-. $DOTFILES/git.sh
-. $DOTFILES/nvm.sh
+. $ZSHRC_ORIGIN_DIRECTORY/zsh.sh
+. $ZSHRC_ORIGIN_DIRECTORY/notes.sh
+. $ZSHRC_ORIGIN_DIRECTORY/git.sh
+. $ZSHRC_ORIGIN_DIRECTORY/nvm.sh
