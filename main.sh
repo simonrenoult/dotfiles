@@ -10,7 +10,7 @@ export PATH="$PATH:$HOME/.bin"
 export PATH="$PATH:$HOME/bin"
 export PATH="$PATH:./node_modules/.bin"
 
-export DOTFILES="$HOME/code/dotfiles"
+export DOTFILES="$HOME/projects/dotfiles"
 
 export EDITOR="vim"
 export GUI_EDITOR="subl"
@@ -32,7 +32,7 @@ function upgrade {
     upgrade_oh_my_zsh
 }
 
-. $HOME/code/dotfiles/zsh.sh
-. $HOME/code/dotfiles/notes.sh
-. $HOME/code/dotfiles/git.sh
-. $HOME/code/dotfiles/nvm.sh
+. $DOTFILES/zsh.sh
+. $DOTFILES/notes.sh
+. $DOTFILES/git.sh
+. $DOTFILES/nvm.sh
