@@ -28,8 +28,8 @@ function branch-from-master {
         echo "Error: an argument must be provided"
     else
         wip
-        git checkout master
-        git checkout -b $1
+        git fetch --all > /dev/null
+        git checkout -b $1 origin/master
     fi
 }
 
