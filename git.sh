@@ -10,11 +10,7 @@ alias push='git push --force origin $(git rev-parse --abbrev-ref HEAD)'
 alias tags='git tag --list -n1'
 alias undo='git reset --soft HEAD~'
 alias nuke='git reset --hard && git clean --force -d'
-
-function fixup-all {
-    git add --all
-    git commit --fixup
-}
+alias fixup='git add --all && git commit --fixup'
 
 function branch-from-master {
     if [ -z "$1" ]; then
@@ -56,7 +52,7 @@ function reset-to-master {
     git reset --hard origin/master
 }
 
-function squash-all {
+function squash {
     git fetch origin
     git rebase --interactive --autosquash origin/master
 }
