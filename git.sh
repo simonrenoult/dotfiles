@@ -12,6 +12,17 @@ alias undo='git reset --soft HEAD~'
 alias nuke='git reset --hard && git clean --force -d'
 alias fixup='git add --all && git commit --fixup'
 
+function debranch {
+    if [ -z "$1" ]; then
+        echo "Error: an argument must be provided"
+    else
+        local commit_to_extract="$1"
+        local branch_name="debranch-${commit_to_extract}"
+        branch-from-master $branch_name
+        git cherry-pick $commit_to_extract
+    fi
+}
+
 function branch-from-master {
     if [ -z "$1" ]; then
         echo "Error: an argument must be provided"
