@@ -29,31 +29,31 @@ function melt {
 
 function merged {
     if [ $# -eq 0 ]; then
-        git fetch origin > /dev/null
+        git fetch --all > /dev/null
         git log --oneline --decorate --first-parent origin/master
     else
-        git fetch origin > /dev/null
+        git fetch --all > /dev/null
         git log --oneline --decorate --first-parent origin/master | grep -i $1
     fi
 }
 
 function news {
-    git fetch origin > /dev/null
+    git fetch --all > /dev/null
     git log --oneline --decorate --first-parent origin/master..HEAD
 }
 
 function rebase-on-master {
-    git fetch origin
+    git fetch --all > /dev/null
     git rebase origin/master
 }
 
 function reset-to-master {
-    git fetch --all
+    git fetch --all > /dev/null
     git reset --hard origin/master
 }
 
 function squash {
-    git fetch origin
+    git fetch --all > /dev/null
     git rebase --interactive --autosquash origin/master
 }
 
