@@ -23,6 +23,8 @@ export GUI_EDITOR="subl"
 alias grep="grep --color"
 alias port="sudo ss -tulpn"
 
+alias k=kubectl
+
 alias vimrc="$EDITOR $HOME/.vimrc"
 
 alias profile="$GUI_EDITOR $ZSHRC_ORIGIN_DIRECTORY"
@@ -32,7 +34,7 @@ function upgrade {
     sudo apt update
     sudo apt full-upgrade -y
     sudo apt autoremove
-    upgrade_oh_my_zsh
+    omz update
 }
 
 . $ZSHRC_ORIGIN_DIRECTORY/zsh.sh
